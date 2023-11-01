@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.grid {
+  height: 100vh;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  height: 6.25%;
+}
+
+.square {
+  border: 1px solid black;
+  width: 6.25%;
+}
