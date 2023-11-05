@@ -3,18 +3,18 @@ body {
   padding: 0;
 }
 .grid {
-  height: 70em;
-  width: 70em;
+  height: 720px;
+  width: 720px; 
 }
 .row {
   display: flex;
   justify-content: center;
-  height: 6.25%;
-}
+}  
 
 .square {
   border: 1px solid black;
-  width: 6.25%;
+  box-sizing: border-box;
+  
 }
 .colorChange {
   background: black;

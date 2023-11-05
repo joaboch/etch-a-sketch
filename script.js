@@ -10,6 +10,9 @@ body.appendChild(grid);
 grid.classList.add('grid');
 
 
+createGrid(16, 45);
+
+
 //Create the grid row and insert divs inside it
 function createGrid(gridSize, squareSize) {
   for(let i = 0; i < gridSize; i++) {
@@ -17,7 +20,7 @@ function createGrid(gridSize, squareSize) {
     for(let j = 0; j < gridSize; j++) {
       const gridSquare = document.createElement('div');
       gridSquare.classList.add('square');
-      gridSquare.style.cssText = `width: ${squareSize}; height: ${squareSize}`;
+      gridSquare.style.cssText = `width: ${squareSize}px; height: ${squareSize}px;`;
       gridRow.appendChild(gridSquare);
     }
     grid.appendChild(gridRow);
@@ -32,10 +35,13 @@ grid.addEventListener('mouseover', function (e) {
     }
   });
 
-//Add the button that specifies the grid squares per side
+//Add the button that specifies the grid squares per side and calculates the indiviual squares size
 btn.addEventListener('click', () => {
+  //The while removes the grid before creating a new one
+  while(grid.firstChild) {
+    grid.removeChild(grid.lastChild);
+  }
   gridSize = prompt('What grid size would you like?');
   const squareSize = grid.clientWidth / gridSize;
-  console.log(squareSize);
   createGrid(gridSize, squareSize);
 })
