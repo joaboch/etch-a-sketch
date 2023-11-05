@@ -1,30 +1,31 @@
-const grid = document.createElement('div');
 const body = document.querySelector('body');
+const container = document.createElement('div'); 
+const gridContainer = document.createElement('div');
+const grid = document.createElement('div');
 const btn = document.createElement('button');
 
 
+body.appendChild(container);
+container.appendChild(gridContainer);
+gridContainer.appendChild(grid);
+container.appendChild(btn);
 
-btn.textContent = 'New grid';
-body.appendChild(btn);
-body.appendChild(grid);
+
+container.classList.add('container');
+gridContainer.classList.add('grid-container');
 grid.classList.add('grid');
-
+btn.textContent = 'New grid';
 
 createGrid(16, 45);
 
 
 //Create the grid row and insert divs inside it
 function createGrid(gridSize, squareSize) {
-  for(let i = 0; i < gridSize; i++) {
-    const gridRow = document.createElement('div');
-    for(let j = 0; j < gridSize; j++) {
-      const gridSquare = document.createElement('div');
-      gridSquare.classList.add('square');
-      gridSquare.style.cssText = `width: ${squareSize}px; height: ${squareSize}px;`;
-      gridRow.appendChild(gridSquare);
-    }
-    grid.appendChild(gridRow);
-    gridRow.classList.add('row');
+  for(let j = 0; j < gridSize * gridSize; j++) {
+    const gridSquare = document.createElement('div');
+    gridSquare.classList.add('square');
+    gridSquare.style.cssText = `width: ${squareSize}px; height: ${squareSize}px;`;
+    grid.appendChild(gridSquare);
   }
 }
 
@@ -41,7 +42,11 @@ btn.addEventListener('click', () => {
   while(grid.firstChild) {
     grid.removeChild(grid.lastChild);
   }
-  gridSize = prompt('What grid size would you like?');
+  gridSize = prompt('What grid size would you like? (Max 100squares)');
+  //Validate the max number of squares per side
+  if(gridSize > 100) {
+    gridSize = prompt('What grid size would you like? (Max 100squares)');
+  }
   const squareSize = grid.clientWidth / gridSize;
   createGrid(gridSize, squareSize);
 })
