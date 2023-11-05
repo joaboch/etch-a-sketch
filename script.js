@@ -6,9 +6,9 @@ const btn = document.createElement('button');
 
 
 body.appendChild(container);
+container.appendChild(btn);
 container.appendChild(gridContainer);
 gridContainer.appendChild(grid);
-container.appendChild(btn);
 
 
 container.classList.add('container');
@@ -32,7 +32,7 @@ function createGrid(gridSize, squareSize) {
 //Add the hover listener to change color of individual grids
 grid.addEventListener('mouseover', function (e) {
     if (e.target.matches('.square')) {
-        e.target.classList.add('colorChange');
+        e.target.style.backgroundColor = randomRgbColor();
     }
   });
 
@@ -50,3 +50,12 @@ btn.addEventListener('click', () => {
   const squareSize = grid.clientWidth / gridSize;
   createGrid(gridSize, squareSize);
 })
+
+//Create a function that generates the random color
+const randomRgbColor = () => {
+  let r = Math.floor(Math.random() * 256);
+  let g = Math.floor(Math.random() * 256);
+  let b = Math.floor(Math.random() * 256);
+  return 'rgba(' + r + ',' + g + ',' + b + ', 0.5)';
+};
+
