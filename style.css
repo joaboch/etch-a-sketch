@@ -3,7 +3,8 @@ body {
   padding: 0;
 }
 .grid {
-  height: 100vh;
+  height: 70em;
+  width: 70em;
 }
 .row {
   display: flex;
